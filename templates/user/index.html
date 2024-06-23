@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home
+    {% endblock  %}
+{% block content %}
+<div class="row slider ms-1 mt-3">
+  <div class="col-sm-4">
+    <img src="{% static 'images/offers.webp'%}" style="max-height:180px;" class="img-fluid w-100" />
+  </div>
+  <div class="col-sm-8">
+    <!--stat slider-->
+    <!-- start slider -->
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <img src="{% static './images/2017Food_Fresh_vegetables_in_a_basket_on_a_table_119867_19.jpg'%}" style="max-height:180px;border-radius:20px;"
+            class="d-block w-100" alt="...">
+        </div>
+        {% for i in sdata %}
+        <div class="carousel-item ">
+          <img src="/{{i.spic}}" style="max-height:180px;border-radius:20px;" class="d-block w-100" alt="...">
+
+        </div>
+        {% endfor %}
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- end slider -->
+    <!--End slider-->
+  </div>
+</div>
+<div class="row category ms-1" >
+  <div class="fs-3 "><b class="text-success">Category</b> </div>
+  {% for x in cdata%}
+  <div class="col-lg-2 col-md-2 mt-4 col-sm-12">
+    <!--Start Category-->
+    <a href="/user/product/?cid={{x.id}}" style="text-decoration:none;">
+      <div class="card cate" style="width: 12rem;">
+        <img src="../{{x.cpic}}" class="card-img-top" alt="paan" width="70" height="200">
+        <div class="card-body">
+          <h6>{{x.cname}}</h6>
+
+        </div>
+      </div>
+    </a>
+    <!--End Category-->
+  </div>
+  {% endfor %}
+</div>
+<!--Today's Deal-->
+<div class="row py-3" style="max-height:600px;">
+  <div class="fs-3 "><b class="text-success">Today's Deals</b> </div>
+  {% for z in offerdata %}
+  <div class="col-lg-2 col-md-4 col-sm-12 mb-2" >
+    <!--start product-->
+    <div class="card">
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-black bg-warning">
+        {{z.total_discount}} &#8377;
+        <span class="visually-hidden">unread messages</span>
+      </span>
+    <img src="../../{{z.product_pic}}" class="card-img-top" height="150px" width="100px">
+    <div class="card-body">
+      <b>{{z.product_name}}
+      </b><br>
+    <b>{{z.product_category}}
+    </b><br>
+    {{z.subcategory_name}} || <s>&#x20B9;{{z.price}}</s>&nbsp;<b>&#x20B9;{{z.discount_price}}</b><br>
+    Total Discount :{{z.total_discount}}<br> Quantity :{{z.product_quantity}}
+    <form method="get" action="/user/indexcart/"> 
+    <div class="input-group">
+      <b class="input-group-text" onclick="funmin{{z.id}}()"  style="cursor:pointer;" id="btnmin">
+        <i class="fa-solid fa-minus" ></i>
+      </b>
+      <input type="hidden" value="{{z.product_name}}" name="pname" />
+      <input type="hidden" value="{{z.product_quantity}}" name="pw" />
+      <input type="hidden" value="{{z.price}}" name="price" />
+      <input type="hidden" value="{{z.product_pic}}" name="ppic" />
+      <input type="text" name="qt" value="0" id="txtcard{{z.id}}" readonly class="form-control fs-5 text-center quantity"/>
+                <b class="input-group-text" id="btnp" style="cursor:pointer !important;"  onclick="funmax{{z.id}}()" id="btnsum" >
+        <i class="fa-solid fa-plus"></i>
+      </b>
+
+    </div>
+    <input type="submit"  value="Add" class="btn bg-mycolor text-light mt-1">
+  </form>
+
+    </div>
+    <!--end product-->
+  </div>
+  </div>
+  <script>
+    var i{{z.id}}=0;
+      var txtc{{z.id}}=document.getElementById("txtcard{{z.id}}");
+      function funmax{{z.id}}()
+      {
+      i{{z.id}}++;
+      txtc{{z.id}}.value=i{{z.id}};
+      }
+      function funmin{{z.id}}()
+      {
+      if(i{{z.id}}>0)
+      {
+      i{{z.id}}--
+      txtc{{z.id}}.value=i{{z.id}};
+      }
+      }
+  </script>
+  {% endfor %}
+</div>
+
+<!--End Today's Deal-->
+<div class="row product bg-light py-3">
+  <div class="fs-3 "><b class="text-success">Latest Product</b> </div>
+  {% for z in ldata %}
+  <div class="col-lg-2 col-md-4 col-sm-12 mb-2">
+    <!--start product-->
+    <div class="card">
+    <img src="../../{{z.product_pic}}" class="card-img-top" height="200px" width="200px">
+    <div class="card-body">
+      <b>{{z.product_name}}
+      </b><br>
+    <b>{{z.product_category}}
+    </b><br>
+    {{z.subcategory_name}} || <s>&#x20B9;{{z.price}}</s>&nbsp;<b>&#x20B9;{{z.discount_price}}</b><br>
+    Total Discount :{{z.total_discount}}<br> Quantity :{{z.product_quantity}}
+    <form method="get" action="/user/indexcart/"> 
+    <div class="input-group">
+      <b class="input-group-text" onclick="funmin{{z.id}}()"  style="cursor:pointer;" id="btnmin">
+        <i class="fa-solid fa-minus"></i>
+      </b>
+      <input type="hidden" value="{{z.product_name}}" name="pname" />
+      <input type="hidden" value="{{z.product_quantity}}" name="pw" />
+      <input type="hidden" value="{{z.price}}" name="price" />
+      <input type="hidden" value="{{z.product_pic}}" name="ppic" />
+      <input type="text" name="qt" value="0" id="txtcard{{z.id}}" readonly class="form-control fs-5 text-center quantity"/>
+                <b class="input-group-text" id="btnp" style="cursor:pointer !important;"  onclick="funplus{{z.id}}()" id="btnsum" >
+        <i class="fa-solid fa-plus"></i>
+      </b>
+
+    </div>
+    <input type="submit"  value="Add" class="btn bg-mycolor text-light mt-1">
+  </form>
+
+    </div>
+    <!--end product-->
+  </div>
+  </div>
+  <script>
+    var i{{z.id}}=0;
+      var txtc{{z.id}}=document.getElementById("txtcard{{z.id}}");
+      function funplus{{z.id}}()
+      {
+      i{{z.id}}++;
+      txtc{{z.id}}.value=i{{z.id}};
+      }
+      function funmin{{z.id}}()
+      {
+      if(i{{z.id}}>0)
+      {
+      i{{z.id}}--
+      txtc{{z.id}}.value=i{{z.id}};
+      }
+      }
+  </script>
+  {% endfor %}
+</div>
+
+</div>
+{% endblock %}

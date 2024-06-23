@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+   Our Products {% endblock  %}
+
+{% block content %}
+
+<div class="col-sm-12 " style="min-height:50px">
+  <div class="text-center fs-1">Our <b style="color:green">Products</b></div>
+</div>
+<div class="row py-3">
+  <div class="col-sm-2">
+    <ul class="list-group ">
+      <li class="list-group-item text-light bg-mycolor" aria-current="true">Subcategory</li>
+      {% for i in scat %}
+      <a href="/user/product?sid={{i.id}}" class="list-group-item list-group-item-action" >{{i.subcategory_name}}</a>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-sm-10">
+    <div class="row">
+      {% for z in ldata %}
+      <div class="col-lg-2 col-md-4 col-sm-12 mb-2">
+        <!--start product-->
+        <div class="card">
+        <img src="../../{{z.product_pic}}" class="card-img-top" height="150" width="100">
+        <div class="card-body">
+          <b>{{z.product_name}}
+          </b><br>
+        <b>{{z.product_category}}
+        </b><br>
+        {{z.subcategory_name}} || <s>&#x20B9;{{z.price}}</s>&nbsp;<b>&#x20B9;{{z.discount_price}}</b><br>
+        Total Discount :{{z.total_discount}}<br> Quantity :{{z.product_quantity}}
+        <form method="get" action="/user/mycart/"> 
+        <div class="input-group">
+          <b class="input-group-text" onclick="funmin{{z.id}}()"  style="cursor:pointer;" id="btnmin">
+            <i class="fa-solid fa-minus" ></i>
+          </b>
+          <input type="hidden" value="{{z.product_name}}" name="pname" />
+          <input type="hidden" value="{{z.product_quantity}}" name="pw" />
+          <input type="hidden" value="{{z.discount_price}}" name="price" />
+          <input type="hidden" value="{{z.product_pic}}" name="ppic" />
+          <input type="text" name="qt" value="0" id="txtcard{{z.id}}" readonly class="form-control fs-5 text-center quantity"/>
+                    <b class="input-group-text" id="btnp" style="cursor:pointer !important;"  onclick="funplus{{z.id}}()" id="btnsum" >
+            <i class="fa-solid fa-plus"></i>
+          </b>
+    
+        </div>
+        <input type="submit"  value="Add" class="btn bg-mycolor text-light mt-1">
+      </form>
+
+        </div>
+        <!--end product-->
+      </div>
+      </div>
+      <script>
+        var i{{z.id}}=0;
+          var txtc{{z.id}}=document.getElementById("txtcard{{z.id}}");
+          function funplus{{z.id}}()
+          {
+          i{{z.id}}++;
+          txtc{{z.id}}.value=i{{z.id}};
+          }
+          function funmin{{z.id}}()
+          {
+          if(i{{z.id}}>0)
+          {
+          i{{z.id}}--
+          txtc{{z.id}}.value=i{{z.id}};
+          }
+          }
+      </script>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

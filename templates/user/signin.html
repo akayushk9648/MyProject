@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Sign In
+    {% endblock  %}
+{% block content %}
+<div class="row log">
+<div class="col-sm-12 " style="min-height:40px"><div class="text-center fs-1">Sign<b style="color:green">In</b></div></div>
+
+  <div class="col-sm-10  " style="margin-left: 20%;">
+    <div class="col-lg-6 m-5 float-end p-5" style="transform:translateX(-50px) !important; background-image:linear-gradient(rgba(255,165, 0, 0.5) ,rgba(255,255,255,0.6));border-radius: 5%; box-shadow: 0px 0px 10px 0px black, 0px 0px 10px 0px white inset; background-size: cover;">
+        <form method="post" >
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="email" class="form-label text-white fw-bold">Email address</label>
+              <input type="email" class="form-control  fw-bold"  style="box-shadow:none !important;" autocomplete="off" name="email" id="email" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text text-white fw-bold">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label text-bg-black fw-bold">Password</label>
+              <input type="password" class="form-control fw-bold" style="box-shadow:none !important;" autocomplete="off" name="password" id="password">
+            </div>
+            <a id="emailHelp" href="#" class="form-text text-black-50  "style="text-decoration:none !important;" ><i class="fa-solid fa-lock"></i> Forgot Password ?</a><br>
+            <button type="submit" class="btn btn-outline-success text-white">Submit</button>
+          </form>
+        </div>
+    <div class="col-sm-5"></div>
+  </div>
+</div>
+{% endblock  %}

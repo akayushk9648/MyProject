@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Cart Items
+    {% endblock  %}
+
+{% block content  %}
+
+<div class="text-center fs-2">Our Cart <b class="text-success">Items</b></div>
+{% if  not request.session.user %}
+<script>
+    alert("You Have to Login First")
+    location.href='/user/signin/'
+{% endif %}
+<div class="row">
+<div class="col-sm-8 mx-auto">
+    <!--cart items-->
+    {% for i in cartdata %}
+    <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-2">
+            <img src="../../{{i.product_picture}}" height="150"  weight="150" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-10">
+            <div class="card-body">
+              <table class="table table-stripted">
+                <tr>
+                    <th>Cart ID</th>
+                    <th>Product Details</th>
+                    <th>Quantity</th>
+                    <th>Discount Price</th>
+                    <th>Price</th>
+                    <th>Added Date</th>
+                    <th>Cancel</th>
+                </tr>
+                <tr>
+                    <td>GT1{{i.id}}</td>
+                    <td>{{i.product_name}}<br>
+                        <small>{{i.pw}}</small>
+                    </td>
+                    <td>{{i.quantity}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.total_price}}</td>
+                    <td>{{i.added_date}}</td>
+                    <td><a href="/user/cartitem/?cid={{i.id}}" class="btn btn-danger" >
+                        <i class="fa-solid fa-trash text-white" ></i>
+                    </a></td>
+                </tr>
+            </table>
+
+            </div>
+          </div>
+        </div>
+    </div>
+        {% endfor %}
+        <a href="/user/orderitem?msg=1" class="btn btn-success mb-2">CheckOut </a>
+        <!--End cart Items-->
+      </div>
+</div>
+
+</div>
+{% endblock  %}

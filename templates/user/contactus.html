@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Contact Us
+    {% endblock  %}
+{% block content %}
+<div class="row con" >
+    <div class="col-sm-12 " style="min-height:900px"><div class="text-center fs-1">Conatct<b style="color:green">US</b></div>
+    <div class="col-sm-4  p-4" style="float:left; min-height: 200px;margin-top:10%; box-sizing:border-box; background:transparent">
+    <h1 style="font-size:50px !important" class=" fw-bold text-dark" >
+        We would <i class="fa fa-heart" style="font-size:48px;color:red"></i>
+        to hear from you</h1>
+    <h5  class="text-black">Fill out the form or write to us at <b> ayush.kushwaha100@gmail.com</b>
+
+    </h5>
+    </div>
+    <div class="col-sm-4  p-4" style="float:right; min-height: 530px;margin-top:10%; box-sizing:border-box; background:rgba(255,255,255,0.5); border-radius:10px;">
+            <form action="" class="form-control input-group-lg" style="background:transparent !important;border:none !important;"  method="post">
+                {% csrf_token %}
+              <div class="col-lg-10 mt-2 w-100 " >
+                <select name="query" id="query" class="coninp w-100 input-group-lg  form-control-lg" >
+                    <option value="" class="input-group-lg" selected>how can you help you?*</option>
+                    <option value="I need help with my Order" class="input-group-lg">I need help with my Order</option>
+                    <option value="I want to partner with Grocery Town" class="input-group-lg">I want to partner with Grocery Town</option>
+                    <option value="I found incorrect/ outdated information on a page" class="input-group-lg">I found incorrect/ outdated information on a page</option>
+                    <option value="The website is not working the way it should" class="input-group-lg">The website is not working the way it should</option>
+                    <option value="I would like to give feedback/ suggestions" class="input-group-lg">I would like to give feedback/ suggestions</option>
+                    <option value="Other" class="input-group-lg">Other</option>
+                </select>
+            </div>
+            <div class="col-lg-10 mt-2 w-100 ">
+                <input type="text" name="name" placeholder="name*" id="name" class="input-group-lg coninp form-control-lg w-100">
+            </div>
+            <div class="col-lg-10 mt-2 w-100">
+                <input type="email" name="email" placeholder="email*" id="email" class="input-group-lg coninp form-control-lg w-100">
+            </div>
+            <div class="col-lg-10 mt-2 w-100">
+                <input type="tel" name="mobile" placeholder="Phone*" id="mobile" class="input-group-lg coninp form-control-lg w-100">
+            </div>
+            <div class="col-lg-10 mt-2 w-100">
+                <textarea name="message" placeholder="Message*" id="message" style="resize:none !important; height:200px;"  class="input-group-lg coninp form-control-lg w-100"></textarea>
+            </div>
+            <input type="submit" class="btn btn-dark text-white w-100"  value="Submit">
+            </form>
+        
+    </div>
+</div>
+    </div>
+    
+{% endblock  %}

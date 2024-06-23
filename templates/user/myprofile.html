@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Profile
+    {% endblock  %}
+{% block content %}
+<div class="row" >
+  <div class="col-sm-12 " style="min-height:20px">
+    <div class="text-center fs-1">My <b style="color:green">Profile <i class="fa-solid fa-user"></i></b></div>
+  </div>
+</div>
+
+{% if not request.session.user %}
+<h1>Login First</h1>
+<script>
+  location.href = "/user/signin"
+</script>
+{% endif %}
+{% for i in rdata%}
+<div class="row " >
+  <div class="col-md-8 mx-auto my-0">
+    <div class="card mb-3" style="background: linear-gradient(rgba(255,255,255,0.4),wheat);">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="/{{i.profile}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8 ">
+          <div class="card-body">
+            <h5 class="card-title p-0 m-0 pb-1"><i class="fa-solid fa-user"></i>&nbsp;{{i.name}}</h5>
+            <h5 class="card-text p-0 m-0 pb-1"><i class="fa-solid fa-envelope"></i>&nbsp;{{i.email}}</h5>
+            <h5 class="card-text p-0 m-0 pb-1"><i class="fa-solid fa-phone"></i>&nbsp;{{i.mobile}}</h5>
+            <h5 class="card-text p-0 m-0 pb-1"><i class="fa-solid fa-lock"></i>&nbsp;{{i.password}}</h5>
+            <h5 class="card-text p-0 m-0 pb-1"><small class="text-muted"><i
+                  class="fa-solid fa-location-dot"></i>&nbsp;{{i.address}}</small></h5><br>
+            <a href="#" onclick="demo()" class="btn btn-sm btn-outline-success" style="cursor:pointer;"><i
+                class="fa-solid fa-pen fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+<div class="row "  id="upform" style="display:none;background-color:linear-gradient(grey,white);">
+  <div class="col-sm-7 mx-auto">
+    <form enctype="multipart/form-data" class="p-5" method="post" style="background:rgba(255,255,255,0.5); border-radius: 3%;">
+      {% csrf_token %}
+      <label for="name">Name</label>
+      <input type="text" name="name" placeholder="Name" id="name" required class="form-control">
+      <label for="tel">Mobile</label>
+      <input type="mobile" name="mobile" placeholder="Mobile" id="mobile" required class="form-control">
+
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="Password" id="password" required class="form-control">
+
+      <label for="profile">Profile Picture</label>
+      <input type="file" name="profile" placeholder="Profile Picture" id="profile" required class="form-control">
+      <label for="address">Address</label><br>
+      <textarea name="address" placeholder="Address" id="address" style="resize: none;" cols="85" class="form-control"
+        rows="2"></textarea><br>
+      <input type="submit" value="Save" class="btn btn-success mb-4">
+
+    </form>
+  </div>
+</div>
+
+<script>
+  function demo(){
+document.getElementById('upform').style.display="block"
+}
+
+</script>
+
+{% endfor %}
+{% endblock %}

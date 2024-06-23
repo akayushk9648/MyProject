@@ -1,0 +1,387 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %}
+    {% endblock  %}
+  </title>
+  <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static '/css/all.css' %}">
+  <link rel="icon" href="{% static 'images/logo.png' %}">
+  <style>
+    :root {
+      --bgcolor: green;
+      --textcolor: wheat;
+    }
+
+    .bg-mycolor {
+      background: var(--bgcolor) !important;
+    }
+
+    .txt-mycolor {
+      color: var(--textcolor);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .anc {
+      padding: 0.3%;
+      transition: all 1s;
+      text-decoration: none;
+      color: white;
+    }
+
+    .anc:hover {
+
+      transition: all 1s;
+      color: #00ffe5;
+      cursor: pointer;
+
+    }
+
+    .btn-success {
+      background: green;
+      color: white;
+    }
+
+    .list-group-item-action:hover {
+      background-color: green;
+      color: white;
+    }
+
+    nav a {
+      color: white !important;
+    }
+
+    .ufooter {
+      min-height: 70px;
+    }
+
+    .bfooter {
+      height: 30px;
+      line-height:30px;
+    }
+
+    .con {
+      background-image: url("{%static 'images/cona.jpg'%}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .coninp {
+      border: none !important;
+      box-shadow: none !important;
+      font-size: 15px !important;
+      background: #E0E0E0 !important;
+      color: #4F4F4F !important;
+    }
+
+    .coninp:hover {
+      border-top: 1px solid black !important;
+      background: #E0E0E0 !important;
+
+    }
+
+    .dropdown-item {
+      color: black;
+      background: white;
+    }
+
+    .dropdown-item:hover {
+      color: white !important;
+      cursor: pointer;
+      background: #212529;
+
+    }
+
+    .form-control {
+      height: 50px;
+      margin: .8%;
+    }
+
+    .cate {
+      transition: all 300ms !important;
+    }
+
+    .cate:hover {
+      cursor: pointer !important;
+      transform: scale(1.05) !important;
+      transition: all 500ms !important;
+      box-shadow: 0px 0px 3px 0px black !important;
+    }
+    .nav-item:hover{
+      color:black !important;
+      border-bottom: 4px solid white;
+      transition:all s;
+    }
+    p .fa-solid,h5 .fa-solid{
+       border:1px solid lime !important;
+       text-align:center;
+       height:35px;
+       width:35px;
+       line-height:35px;
+       color:green;
+    }
+    .log {
+      background-image: url("{%static 'images/top-view-delicious-groceries-paper-bag.jpg'%}");
+      background-repeat: no-repeat;
+      background-size: cover !important;
+      
+    }
+    .cre{
+      background-image: url("{%static 'images/flat-lay-vegetables-frame.jpg'%}");
+      background-repeat: no-repeat;
+      background-size: cover !important;
+      
+    }
+    .btn-outline-success{
+      background-color: #ecdcdc;
+      border:1px solid #008000;
+      border-radius: 10%;
+      color:#000 !important;
+
+    }
+    .btn-outline-success:hover{
+      background-color:#008000 ;
+      color:#fff !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row t1 text-center txt-mycolor bg-mycolor py-1" style="font-size:15px ;box-shadow: 4px 4px 6px black; ">
+      <div class="col-lg-3 col-sm-12 col-md-6">
+        <i class="fa-solid fa-phone"></i>&emsp; +91 1234567890
+      </div>
+      <div class="col-lg-3 col-sm-12 col-md-6">
+        <i class="fa-solid fa-envelope"></i>&emsp; ak@gmail.com
+      </div>
+      <div class="col-lg-3 col-sm-12 col-md-6">
+        An ISO 9001:2015 Certified Software Company
+      </div>
+      <div class="col-lg-3 col-sm-12 col-md-6 fs-5">
+        <a href="http://wa.me/919648078358" class="anc"><i class="fa-brands fa-square-whatsapp"></i></a>
+        <a href="https://www.facebook.com/ayush.kushwaha.944/" class="anc"><i
+            class="fa-brands fa-square-facebook"></i></a>
+        <a href="http://www.linkedin.com/in/ayush-kushwaha100" class="anc"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/hey_aayush23/" class="anc"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="https://github.com/akayushk9648" class="anc"><i class="fa-brands fa-square-github"></i></a>
+        <a href="mailto:ayush.kushwaha100@gmail.com" class="anc"><i class="fa-solid  fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="row t2 ">
+      <div class="col-sm-10 mx-auto">
+        <div class="row py-4">
+          <div class="col-sm-4 fs-2"><a style="text-decoration:none;" href="">
+            <span class="text-black">Grocery</span> <b style="color:green;"> town
+              <i class="fa-solid fa-cart-shopping" style="color: #008000;"></i></b></a>
+          </div>
+          <div class="col-sm-4">
+
+          </div>
+          <div class="col-sm-2 text-end">
+            {% if request.session.user %}
+            <a href="/user/cartitem/" class="btn bg-mycolor text-white">Cart
+              <i class="fa-solid fa-cart-shopping"></i> 
+              <b class="badge text-bg-light">{{request.session.cartitem}}</b>
+              
+            </a>
+            {% else %}
+            {% if request.session.user %}
+            <a href="/user/cartitem/" class="btn bg-mycolor text-white">Cart
+              <i class="fa-solid fa-cart-shopping"></i> 
+              <b class="badge text-bg-light">0</b>
+              
+            </a>
+            {% endif %}
+            {% endif %}
+          </div>
+          <div class="col-sm-2">
+            {% if request.session.user %}
+            <a href="/user/myprofile" class="nav-link fs-5 "> {{request.session.username}}
+              <img src='/{{request.session.userpic}}' style="max-height:45px;width:45px;" class="img-fluid">
+            </a>
+            {% else %}
+            <a class="nav-link " href="/user/signin">
+              <img src="{%static 'images\default-user-profile-picture_hvoncb.png'%}" style="max-height:45px"
+                class="img-thumbnail" />
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row t3 bg-mycolor">
+
+      <div class="col-sm-9 ">
+        <!--Start Menu -->
+        <nav class="navbar navbar-expand-lg bg-transparent bg-light">
+          <div class="container-fluid">
+            <button class="navbar-toggler navbar-toggler-right text-bg-light " type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon "></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size:15px;">
+                <li class="nav-item">
+
+                  <a class="nav-link " aria-current="page" href="/user/">
+                    <i class="fa-solid fa-house-chimney"></i> Home
+                  </a>
+                  </i>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/user/about">
+                    <i class="fa-solid fa-circle-info">
+                    </i> About Us</a>
+                </li>
+                <li class="nav-item dropdown ">
+
+                  <a class="nav-link " href="/user/product"><i class="fa-solid fa-bag-shopping"></i>
+                     Product
+                  </a>
+                  
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/user/contact"><i class="fa-regular fa-address-card"></i> Customer Support</a>
+                </li>
+                <li class="nav-item">
+                  {% if request.session.user %}
+                  <a class="nav-link" href="/user/myprofile"><i class="fa-solid fa-user"></i> My Profile</a>
+                  {% endif %}
+                <li>
+                  <li class="nav-item">
+                    {% if request.session.user %}
+                    <a class="nav-link" href="/user/orderitem"><i class="fa-solid fa-cart-arrow-down"></i> My Orders</a>
+                    {% endif %}
+                  </li>
+                <li class="nav-item">
+                  {% if not request.session.user %}
+                  <a class="nav-link" href="/user/signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a>
+                  {% endif %}
+                </li>
+                {% if request.session.user %}
+                <li class="nav-item">
+                  <a class="nav-link" href="/user/signin"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  {% if not request.session.user %}
+                  <a class="nav-link" href="/user/signin"><i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In</a>
+                  {% endif %}
+                <li>
+                  {% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!--End Menu -->
+      </div>
+      <div class="col-sm-3">
+        <a style="text-decoration:none;" href="/user/index">
+        <img src="{% static 'images/logo.png' %}" width="100" height="60">
+        </a>
+      </div>
+    </div>
+    {% block content %}{% endblock %}
+    <div class="row ufooter" style="max-height:70px !important;background:#EEEEEE;">
+      <div class="col-sm-3" >
+        <h1>Grocery<Span style="color:green; font-weight:bold;">Town</Span></h1>
+      </div>
+    </div>
+      <br>
+      <div class="row m-0 p-0" style="background:#EEEEEE;">
+        <div class="col-lg-3 col-md-6 col-sm-12 ms-4">
+          <h5 class="m-0 p-0">About GroceryTown</h5>
+          <ul class="p-0 m-0" style="text-decoration:none; list-style: none;">
+            <a href="/user/about" style="text-decoration:none; color:black">
+              <li id="l1">Who are we</li>
+            </a>
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l4">Investor Relations</li>
+            </a>
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l5">Report Fraud</li>
+            </a>
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l6">Press Kit</li>
+            </a>
+            <a href="/user/contact" style="text-decoration:none; color:black">
+              <li id="l7">Contact Us</li>
+            </a>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6  col-sm-12">
+          <h5 class="m-0 p-0">For Developer</h5>
+          <ul class="p-0 m-0" style="text-decoration:none; list-style: none;">
+            <a href="/user/mprofile" style="text-decoration:none; color:black">
+              <li id="l1">Developer's Profile</li>
+            </a>
+            
+          </ul>
+          <h5 class="m-0 p-0 mt-4">For Enterprise</h5>
+          <ul class="p-0 m-0" style="text-decoration:none; list-style: none;">
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l1">GroceryTown for Enterprise</li>
+            </a>
+
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <h5 class="m-0 p-0 ">For Enterprise</h5>
+          <ul class="p-0 m-0" style="text-decoration:none; list-style: none;">
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l1">Privacy</li>
+            </a>
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l1">Security</li>
+            </a>
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l1">Terms</li>
+            </a>
+            <a href="#" style="text-decoration:none; color:black">
+              <li id="l1">Sitemap</li>
+            </a>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12 ">
+          <h5 class="m-0 p-0 ">Social Links</h5>
+          <ul class="list-group list-group-horizontal">
+            <li style="list-style:none; cursor:pointer;"><i class="bg-transparent list-group-item fa-brands fa-square-instagram" style="color:#000;"></i></li>
+            <li style="list-style:none; cursor:pointer;"><i class="bg-transparent list-group-item fa-brands fa-square-facebook" style="color:#000 ;"></i></li>
+            <li style="list-style:none; cursor:pointer;"><i class="bg-transparent list-group-item fa-brands fa-square-youtube" style="color: #000"></i></li>
+            <li style="list-style:none; cursor:pointer;"><i class="bg-transparent list-group-item fa-brands fa-twitter-square" style="color: #000000"></i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row bfooter bg-dark fw-bold">
+      <div class="col-sm-4 text-white fw-bold ">
+        © GroceryTown All rights reserverd 
+      </div>
+      <div class="col-sm-6 text-white" >
+        <a href="/user/mprofile" style="text-decoration:none !important; color:var(--textcolor) !important;">
+        Designed & Developed By Er. Ayush Kushwaha
+        </a>
+      </div>
+      <div class="col-sm-2 text-white">
+        <a href="#" style="text-decoration:none !important;color:var(--textcolor); ">
+        Privacy Policy
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
