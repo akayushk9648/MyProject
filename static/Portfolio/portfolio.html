@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush Kushwaha</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="img/1.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --my: radial-gradient(circle at top left, rgb(70, 255, 181), black);
+            --sec: radial-gradient(circle at top left, black, rgb(70, 255, 181));
+        }
+
+        .cont {
+
+            overflow: hidden;
+        }
+
+        .cont .text {
+            position: relative;
+            color: rgb(70, 255, 181);
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .cont .text.first-text {
+            color: #000;
+        }
+
+        .text.sec-text:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            border-left: 2px solid rgb(70, 255, 181);
+            animation: animate 4s steps(12) infinite;
+        }
+
+        @keyframes animate {
+
+            40%,
+            60% {
+                left: calc(100% + 4px);
+            }
+
+            100% {
+                left: 0%;
+            }
+        }
+
+        .ico {
+            color: #000;
+            font-size: 30px;
+            transition: all .8s;
+            margin-bottom: 3px !important;
+        }
+
+        .ico:hover {
+            color: rgb(70, 255, 181);
+            transform: scale(1.15);
+            transition: all .8s;
+            margin-bottom: 3px !important;
+        
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-image: linear-gradient(to right, rgb(70, 255, 181), black);
+            animation: animate-border 1s linear infinite;
+            transform: translateY(100px);
+        }
+
+        @keyframes animate-border {
+            0% {
+                border: 10px solid rgb(70, 255, 181);
+            }
+
+            50% {
+                border: 10px solid black;
+            }
+
+            100% {
+                border: 10px solid rgb(70, 255, 181);
+            }
+
+        }
+
+        .circle img {
+            width: 290px;
+            height: 290px;
+            border-radius: 50%;
+            transform: translateX(-5px) translateY(-5px);
+            top: 0;
+            left: 0;
+        }
+
+        .sc {
+            transform: scale(1);
+            transition: all 1000ms;
+        }
+
+        .sc:hover {
+            transform: rotate(10deg) scale(1.3) skew(4deg) !important;
+            cursor: pointer;
+            transition: all 1300ms;
+        }
+
+        a,
+        .nm {
+
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+
+        }
+
+        .cookieCard {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(wheat 20%, rgb(70, 255, 181));
+            border-radius: 10%;
+            color: black;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            transition: all 1s;
+        }
+
+        .cookieCard:hover {
+            transform: scale(1.05);
+            transition: all 1s;
+            background: linear-gradient(to right, rgb(70, 255, 181) 95%, yellow 5%);
+            cursor: pointer;
+            
+            color: #000;
+        }
+
+
+        .cookieHeading {
+            font-size: 2em;
+            font-weight: 600;
+            color: rgb(0, 0, 0);
+            z-index: 2;
+        }
+
+        .cookieDescription {
+            font-size: 1.05em;
+            color: rgb(0, 0, 0);
+            z-index: 2;
+        }
+
+        nav a:after,
+        .nm:after {
+            background: none repeat scroll 0 0 transparent;
+            bottom: 0;
+            content: "";
+
+            height: 4px;
+            left: 50%;
+            position: absolute;
+            background: linear-gradient(40deg, black, rgb(70, 255, 181));
+            transition: width .5s ease .5s, left .5s ease .5s;
+            width: 0;
+            cursor: pointer;
+        }
+
+        nav a:hover:after,
+        .nm:hover:after {
+            width: 100%;
+            left: 0;
+            cursor: pointer;
+        }
+
+        nav a {
+            transition: all 1s;
+        }
+
+        nav a:hover {
+            transform: skew(15deg) scale(1.18) !important;
+            transition: all 1000ms !important;
+            font-weight: bold;
+        }
+
+        .im:hover {
+            box-shadow: 0px 50px 50px -20px rgb(255, 170, 202),
+                0px 30px 60px -30px rgb(21, 1, 94),
+                0px -2px 6px 0px rgb(2, 12, 131) inset;
+            cursor: pointer;
+
+        }
+
+        .text {
+            font-size: 30px;
+            font-weight: 500;
+            color: var(--sec);
+            padding-left: 5%;
+        }
+
+        .name {
+            width: 550px;
+            transition: all 1000ms;
+        }
+
+        .name:hover {
+            cursor: pointer;
+            box-shadow: 12px 0px 0px rgb(70, 255, 181);
+            transition: all 1000ms;
+            
+
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+            cursor:pointer;
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: transparent;
+            color: white;
+        }
+
+        .flip-card-back {
+            background-color: rgb(70, 255, 181);
+            color: white;
+            transform: rotateY(180deg);
+        }
+    
+        .ag-format-container {
+            width: 1142px;
+            margin: 0 auto;
+        }
+
+
+
+        .ag-courses_box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+            padding: 50px 0;
+        }
+
+        .ag-courses_item {
+            -ms-flex-preferrgb(70, 255, 181)-size: calc(33.33333% - 30px);
+            flex-basis: calc(33.33333% - 30px);
+
+            margin: 0 15px 30px;
+
+            overflow: hidden;
+
+            border-radius: 28px;
+        }
+
+        .ag-courses-item_link {
+            display: block;
+            padding: 30px 20px;
+            background-color: grey;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .ag-courses-item_link:hover,
+        .ag-courses-item_link:hover .ag-courses-item_date {
+            text-decoration: none;
+            color: #FFF;
+        }
+
+        .ag-courses-item_link:hover .ag-courses-item_bg {
+            -webkit-transform: scale(10);
+            -ms-transform: scale(10);
+            transform: scale(10);
+        }
+
+        .ag-courses-item_title {
+            min-height: 87px;
+            margin: 0 0 25px;
+
+            overflow: hidden;
+
+            font-weight: bold;
+            font-size: 30px;
+            color: #FFF;
+
+            z-index: 2;
+            position: relative;
+        }
+
+        .ag-courses-item_date-box {
+            font-size: 18px;
+            color: #FFF;
+
+            z-index: 2;
+            position: relative;
+        }
+
+        .ag-courses-item_date {
+            font-weight: bold;
+            color: rgb(70, 255, 181);
+
+            -webkit-transition: color .5s ease;
+            -o-transition: color .5s ease;
+            transition: color .5s ease
+        }
+
+        .ag-courses-item_bg {
+            height: 128px;
+            width: 128px;
+            background-color:rgb(70, 255, 181);
+
+            z-index: 1;
+            position: absolute;
+            top: -75px;
+            right: -75px;
+
+            border-radius: 50%;
+
+            -webkit-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+
+        .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+            background-color:rgb(70, 255, 181);
+        }
+
+        .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+            background-color:rgb(70, 255, 181);
+        }
+
+        .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+            background-color:rgb(70, 255, 181);
+        }
+
+        .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+            background-color:rgb(70, 255, 181);
+        }
+
+        .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+            background-color:rgb(70, 255, 181);
+        }
+
+
+
+        @media only screen and (max-width: 979px) {
+            .ag-courses_item {
+                -ms-flex-preferrgb(70, 255, 181)-size: calc(50% - 30px);
+                flex-basis: calc(50% - 30px);
+            }
+
+            .ag-courses-item_title {
+                font-size: 24px;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .ag-format-container {
+                width: 96%;
+            }
+
+        }
+
+        @media only screen and (max-width: 639px) {
+            .ag-courses_item {
+                -ms-flex-preferrgb:(70, 255, 181)-size: 100%;
+                flex-basis: 100%;
+            }
+
+            .ag-courses-item_title {
+                min-height: 72px;
+                line-height: 1;
+
+                font-size: 24px;
+            }
+
+            .ag-courses-item_link {
+                padding: 22px 40px;
+            }
+
+            .ag-courses-item_date-box {
+                font-size: 16px;
+            }
+        }
+
+        .whatsapp_float {
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            z-index: 100;
+            transition: all 500ms;
+        }
+
+        .whatsapp_float:hover {
+            transform: scale(1.3);
+            transition: all 500ms;
+        }
+        .btn-outline-danger{
+            background: #FFF;
+            border: 1px solid rgb(70, 255, 181);
+        }
+        .btn-outline-danger:hover{
+            background: rgb(70, 255, 181);
+            color: #000;
+            border:1px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row bg-white sticky-lg-top sticky-md-top sticky-sm-top sticky-xl-top sticky-xxl-top"
+            style="box-shadow: 0px 0px 10px 0px black ;">
+            <header>
+                <nav class="navbar  navbar-expand-lg navbar-light py-3">
+                    <div class="container "><a class="navbar-brand " href="#home"><img src="img/logo.png"
+                                class="p-0 m-0" `width="300px" height="40px" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#toggleMobileMenu" aria-controls="toggleMobileMenu" aria-expanded="false"
+                            aria-table="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="toggleMobileMenu">
+                            <ul class="navbar-nav ms-lg-auto">
+                                <li class="nav-item"><a href="#home" aria-current="page" class="nav-link  nv">Home</a>
+                                </li>
+                                <li class="nav-item "><a href="#about" class="nav-link nv">About</a></li>
+                                <li class="nav-item"><a href="#services" class="nav-link nv">Services</a></li>
+                                <li class="nav-item "><a href="#projects" class="nav-link nv">Projects</a></li>
+                                <li class="nav-item "><a href="#achiv" class="nav-link nv">Achievement</a></li>
+                                <li class="nav-item"><a href="#contact" class="nav-link nv">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+        <div class="row" id="home">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xl-8 col-xxl-8 pt-5 ps-5"
+                style="box-sizing: border-box !important;">
+                <h3>Hi, I'm</h3>
+                <h1 class="name"
+                    style="font-family:'Times New Roman', Times, serif !important; padding: 0px;margin:0px; font-size:75px;">
+                    Ayush Kushwaha
+                </h1>
+                <div class="cont">
+                    <h4 class="m-0 pt-3"><span class="p-0 text first-text">I am a </span><span
+                            class="p-0 text sec-text"></span>
+                    </h4>
+                </div>
+                <h5>Let's Connect</h5>
+                <a href="mailto:ayush.kushwaha100@gmail.com" target="_blank"><i
+                        class="fa-solid fa-envelope ico pt-1"></i></a>&emsp;
+                <a href="https://github.com/akayushk9648" target="_blank"><i
+                        class="fa-brands fa-github ico"></i></a>&emsp;
+                <a href="https://www.linkedin.com/in/ayush-kushwaha100" target="_blank"><i
+                        class="fa-brands fa-linkedin ico"></i></a>&emsp;
+                <a href="https://www.instagram.com/hey_aayush23" target="_blank"><i
+                        class="fa-brands fa-instagram ico"></i></a>&emsp;<br><br>
+
+                <button class="btn btn-outline-danger">
+                    <a href="Ayush.pdf" download="" style="text-decoration: none; color: black;"><i
+                            class="fa-solid fa-file-invoice"></i>&emsp;<span style="text-decoration: none;"
+                            class=" fw-bold" style="color:white;">Download CV</span></a>
+                </button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xl-4 col-xxl-4">
+                <div class="circle im">
+                    <img src="img/m1.jpg" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="height: 200px;"></div>
+        <div class="row ps-5">
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6 col-xxl-6 ps-5 bg-light float-start"
+                style="min-height: 400px;">
+                <h1 class="pt-4" id="about"
+                    style="font-family: 'Finger Paint', cursive !important;font-size:40px; color:black">Let's have
+                    an introduction!</h1><br>
+                <p class="text-black ps-3 fs-5" style="text-align: justify;">I go by the saying, <span
+                        style="font-weight: bold; color:rgb(70, 255, 181);">"A day without learning is a day
+                        wasted."</span>
+                    I am a final year student at SR Institute of Management & Technology,Lucknow in the Computer
+                    Science and
+                    Engineering Department. I am a<span style="font-weight: bold; color:rgb(70, 255, 181);"> Full-stack
+                        developer</span>, a developer by passion and a designer by
+                    heart. I work with different tech stacks to create beautiful websites, <span
+                        style="font-weight: bold; color:rgb(70, 255, 181);">Django</span> being my
+                    top favorite. I enjoy coding in <span style="font-weight: bold; color:rgb(70, 255, 181);">Python</span>.
+                    <br><br>
+                    My primary domains of interest are Database Systems like <span
+                        style="font-weight: bold; color:rgb(70, 255, 181);">MySQL</span> and Back-end Programming,
+                    backed by my projects
+                    and experience. I was always interested in multiple things, and multitasking gradually became a
+                    routine. I love networking, and I could spend hours talking about things. Effective
+                    communication is the only way to complete tasks in a team, so you might as well do well in it.
+                    If you offer me an opportunity, you have a great chance of having me, as I'm a sucker for good
+                    collaborations. <br>
+                    <span style="font-weight: bold;; color:rgb(70, 255, 181);">Feel
+                        free to connect!</span>
+                </p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6 col-xxl-6 bg-light float-end"
+                style="min-height: 400px; box-sizing: border-box; padding-left: 10%;">
+                <h1 class="pt-4 text-center"
+                    style="font-family: 'Finger Paint', cursive !important;font-size:40px; color:black">Skills <i
+                        class="fa-solid fa-gear" style="color: #000000;"></i></h1><br>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xl-12 col-xxl-12 pt-3">
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/html.png" title="HTML" class="sc" height="100" width="100" alt="">
+                        </div>
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/css.png" title="CSS" class="sc" height="100" width="100" alt="">
+                        </div>
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/js.png" title="Javascript" class="sc" height="100" width="100" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xl-12 col-xxl-12 pt-3">
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/bs5.png" title="BootStrap 5" class="sc" height="100" width="100" alt="">
+                        </div>
+                        <div class="pe-4 ms-4 " style="display: inline;">
+                            <img src="img/django.png" title="Django" class="sc" height="100" width="100" alt="">
+                        </div>
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/py.png" title="Python" class="sc" height="100" width="100" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xl-12 col-xxl-12 pt-3">
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/c.png" title="C" class="sc" height="100" width="100" alt="">
+                        </div>
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/c++.png" title="C++" class="sc" height="100" width="100" alt="">
+                        </div>
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/mssql.png" title="MS SQL" class="sc" width="100" height="100" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xl-12 col-xxl-12 pt-3">
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/github.png" title="Github" class="sc" width="100" height="100" alt="">
+                        </div>
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/mysql.png" title="MySQL" class="sc" width="100" height="100"="">
+                        </div>
+                        <div class="pe-4 ms-4" style="display: inline;">
+                            <img src="img/dsa.png" title="Data Structures and Algorithm" class="sc" width="100"
+                                height="100">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row ms-1 mt-1 " style="min-height:200px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xxl-12 bg-white mt-2" id="services"
+                style="min-height: 100px; ">
+                <h1 class="text-black text-center" style="font-size: 50px !important;">
+                    Services</h1><br>
+                <div class="col-md-4 col-lg-4 col-sm-12 col-xl-4 col-xxl-4" style="display: inline-block !important;">
+                    <h4 class="text-center text-dark fw-bold">Web Designer</h4>
+                    <div class="flip-card" style="margin: 0px auto;">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front " style="border-radius: 5px !important;">
+                                <img src="img/webd.png" alt="Avatar"
+                                    style="margin-top: 10px !important; width:180px;height:180px;">
+                            </div>
+                            <div class="flip-card-back" style="border-radius: 5px !important;">
+                                <h4>Web Desining</h4>
+                                <p>I'm a Skilled Web Designer </p>
+                                <h5>Technologies I used:</h5>
+                                <p> HTML ,CSS ,BootStrap, Tailwind ,JS </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-12 col-xl-4 col-xxl-4 m-0 p-0"
+                    style="display: inline-block !important; ">
+                    <h4 class="text-center text-dark fw-bold">
+                        Software Dev</h4>
+                    <div class="flip-card " style="margin: 0px auto;">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front " style="border-radius: 5px !important;">
+                                <img src="img/sw.png" alt="Avatar"
+                                    style="margin-top: 10px !important; width:180px;height:180px;">
+                            </div>
+                            <div class="flip-card-back" style="border-radius: 5px !important;">
+                                <h4>GUI Apps</h4>
+                                <p>I'm a Skilled Software Developer</p>
+                                <h5>Technologies I used:</h5>
+                                <p>Python with GUI framework : pygame,tkinter, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3col-lg-3 col-sm-12 col-xl-3 col-xxl-3 ms-1"
+                    style="display: inline-block !important; transform:translateX(40px)">
+                    <h4 class="text-center text-dark fw-bold">
+                        UI/UX Designer</h4>
+                    <div class="flip-card" style="margin: 0px auto;">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front" style="border-radius: 5px !important;">
+                                <img src="img/UI.png" alt="Avatar"
+                                    style="margin-top: 10px !important; width:180px;height:180px;">
+                            </div>
+                            <div class="flip-card-back" style="border-radius: 5px !important;">
+                                <h4>UI/UX</h4>
+                                <p>I'm a Skilled UI Desinger</p>
+                                <h5>Technologies I used:</h5>
+                                <p>HTML,CSS,Tailwind,BS-5,JS,jQuery etc.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row ms-1 mt-1 " style="min-height:200px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xxl-12 bg-white mt-2"
+                    style="min-height: 100px; ">
+                    <div class="col-md-4 col-lg-4 col-sm-12 col-xl-4 col-xxl-4"
+                        style="display: inline-block !important;">
+                        <h4 class="text-center text-dark fw-bold">Full Stack Web Development</h4>
+                        <div class="flip-card" style="margin: 0px auto;">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front " style="border-radius: 5px !important;">
+                                    <img src="img/webt.png" alt="Avatar"
+                                        style="margin-top: 10px !important; width:180px;height:180px;">
+                                </div>
+                                <div class="flip-card-back" style="border-radius: 5px !important;">
+                                    <h4 class="m-0 p-0">Web Development</h4>
+                                    <p>I'm a Skilled Web Developer </p>
+                                    <h6>Technologies I used:</h6>
+                                    <p> HTML,CSS,BS-5,Tailwind,JS <br>
+                                        Python Web Framework: Django, SQL</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-sm-12 col-xl-4 col-xxl-4 m-0 p-0"
+                        style="display: inline-block !important; ">
+                        <h4 class="text-center text-dark fw-bold">
+                            Logo Designing</h4>
+                        <div class="flip-card " style="margin: 0px auto;">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front " style="border-radius: 5px !important;">
+
+                                    <img src="img/logo (2).png" alt="Avatar"
+                                        style="margin-top: 10px !important; width:180px;height:180px;">
+                                </div>
+                                <div class="flip-card-back" style="border-radius: 5px !important;">
+                                    <h4>Logos</h4>
+                                    <p>I'm a Logo Designer</p>
+                                    <h5>Software I used:</h5>
+                                    <p>Canva,Adobe Logo Maker.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-sm-12 col-xl-3 col-xxl-3 ms-1"
+                        style="display: inline-block !important; transform:translateX(40px)">
+                        <h4 class="text-center text-dark fw-bold">
+                            Web Hosting</h4>
+                        <div class="flip-card" style="margin: 0px auto;">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="border-radius: 5px !important;">
+                                    <img src="img/host-removebg-preview.png" alt="Avatar"
+                                        style="transform: translateX(-22px); margin-top: 10px !important; width:250px;height:180px;">
+                                </div>
+                                <div class="flip-card-back" style="border-radius: 5px !important;">
+                                    <h4>Web Hosting and Domain </h4>
+                                    <p>I can also host your site on server</p>
+                                    <h5 class="m-0 p-0">Websites I used:</h5>
+                                    <p>Hostinger,GoDaddy,Github Pages etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xxl-12 col-xl-12 col-sm-12 float-end mt-5" id="projects"
+                style="min-height: 300px;">
+                <h1 class="text-center fw-bold">Projects</h1>
+                <div class="ag-format-container">
+                    <div class="ag-courses_box">
+                        <div class="ag-courses_item">
+                            <a href="#" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+
+                                <div class="ag-courses-item_title">
+                                    <span style="text-transform: capitalize;">
+                                        GUI based Typing Software by Python
+                                    </span>
+                                </div>
+
+                                <div class="ag-courses-item_date-box">
+                                    At:
+                                    <span class="ag-courses-item_date">
+                                        Dec,2021
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="ag-courses_item">
+                            <a href="#" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+
+                                <div class="ag-courses-item_title">
+                                    <span style="text-transform: capitalize;">
+                                        Budget Analyzer By HTML,CSS & JS
+                                    </span>
+                                </div>
+
+                                <div class="ag-courses-item_date-box">
+                                    At:
+                                    <span class="ag-courses-item_date">
+                                        May,2022
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="ag-courses_item">
+                            <a href="#" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+
+                                <div class="ag-courses-item_title">
+                                    <span style="text-transform: capitalize;">Blossom Music Player By Python</span>
+                                </div>
+
+                                <div class="ag-courses-item_date-box">
+                                    At:
+                                    <span class="ag-courses-item_date">
+                                        May,2023
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="ag-courses_item">
+                            <a href="#" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+
+                                <div class="ag-courses-item_title">
+                                    P<span style="text-transform: lowercase;">ortfolio:&lt;ayush.dev&gt; </span><br>
+                                    <span style="text-transform: capitalize;">By HTML,CSS,JS & Bootstrap</span>
+                                </div>
+
+                                <div class="ag-courses-item_date-box">
+                                    At:
+                                    <span class="ag-courses-item_date">
+                                        Aug,2023 - Sep,2023
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="ag-courses_item">
+                            <a href="#" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+
+                                <div class="ag-courses-item_title">
+                                    <span style="text-transform: capitalize;">Pivasa Power by using Django Web
+                                        Framework</span>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="ag-courses-item_date-box">
+                                    At:
+                                    <span class="ag-courses-item_date">
+                                        Progress
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="ag-courses_item">
+                            <a href="#" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+
+                                <div class="ag-courses-item_title fs-3">
+                                    <span style="text-transform: capitalize;">Grocery Town:Grocery Delivering Website By Django Web Framework</span>
+                                </div>
+                                <div class="ag-courses-item_date-box">
+                                    At:
+                                    <span class="ag-courses-item_date">
+                                        Progress
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 align-items-sm-center" id="achiv">
+                <h1 class="text-center pb-5">Achievement</h1>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="cookieCard">
+                            <p class="cookieHeading">Internship At Codeclause</p>
+                            <p class="cookieDescription">Got a Certificate Of Internship at Codeclause as a Python
+                                Developer
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="cookieCard">
+                            <p class="cookieHeading">Ad Mad Show </p>
+                            <p class="cookieDescription">Take Part in Ad-mad Show organised in Our College and got a
+                                certificate of Participation
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="cookieCard">
+                            <p class="cookieHeading">LOR | Codeclause</p>
+                            <p class="cookieDescription">After Completion of My Internship in Codeclause. Codeclause
+                                Recommended me for further Oppurtunities in other company
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="cookieCard">
+                            <p class="cookieHeading">College Job Fair.</p>
+                            <p class="cookieDescription">I am a volunteer in Our College Job Fair called Saksham</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5"
+            style="background:url(img/business-jzw8ax93flqonkce.jpg);background-repeat: no-repeat; z-index: -1; background-size: cover;">
+            <div class="col-lg-12 col-md-12 col-sm-12 " style=" background-image: linear-gradient(45deg,rgba(70,255,181,0.4),rgba(0,0,0,0.6));
+            background-size: cover;padding-top:50px ;width: 100%;height:750px;">
+                <div class="col-lg-4 col-md-4 col-sm-12 mb-5" style="margin: 0px auto;">
+                    <h1 class="text-center" id="contact">
+                        <u class="text-white">Contact</u><span style="color:rgb(70, 255, 181)"><u>Us</u></span>
+                    </h1>
+                    <form id="contact-form" class="form-control " style="background: linear-gradient(rgb(70, 255, 181),wheat); color:rgb(255, 255, 181)"
+                        method="post">
+                        <table>
+                            <tr>
+                                <th><label class="form-label mt-5" for="name">Name :&emsp;&emsp;</label></th>
+                                <td colspan="2"><input type="text" class="form-control input-group mt-5"
+                                        autocomplete="off" name="name" id="name"></td>
+
+                            </tr>
+                            <tr>
+                                <th><label class="form-label mt-5" for="email">E-mail :&emsp;&emsp;</label></th>
+                                <td colspan="3"><input type="email" class="form-control input-group mt-5"
+                                        autocomplete="off" name="name" id="name"></td>
+                            </tr>
+                            <tr>
+                                <th><label class="form-label mt-5" for="message">Message :&emsp;&emsp;</label></th>
+                                <td colspan="3"><textarea name="message" id="message"
+                                        class="form-control input-group mt-5" style="resize:none;" cols="30"
+                                        rows="10"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" class="input-group form-control my-3 btn btn-outline-info"
+                                        value="Send">
+                                </td>
+                            </tr>
+
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 bg-dark text-white " style="height: 30px;">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 float-end col-sm-12 text-white">
+                        <h6 style="text-align: center;">Proudly Made By Ayush Kushwaha</h6>
+                    </div>
+                
+                    <div class="col-lg-5 col-md-5 float-end col-sm-12">
+                        <h6 style="text-align: center;">All Rights are Reserved &#169; 2023 By Ayush Kushwaha</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="whatsapp_float">
+            <a href="https://wa.me/919648078358" target="_blank">
+                <img src="img/whatsapp.png" height="50" width="50" class="whatsapp_float_btn">
+            </a>
+        </div>
+    </div>
+
+
+
+</body>
+
+<script>
+    const obj = document.querySelector(".sec-text")
+
+    const textLoad = () => {
+        setTimeout(() => {
+            obj.textContent = " Web Designer";
+        }, 0);
+        setTimeout(() => {
+            obj.textContent = " Python Developer";
+        }, 4100);
+        setTimeout(() => {
+            obj.textContent = "Website Builder";
+        }, 8000);
+        setTimeout(() => {
+            obj.textContent = "Front-end Developer";
+        }, 12000);
+        setTimeout(() => {
+            obj.textContent = "Computer Gamer";
+        }, 16000);
+        setTimeout(() => {
+            obj.textContent = " Problem Solver";
+        }, 20000);
+
+        setTimeout(() => {
+            obj.textContent = " Full Stack Web Developer";
+        }, 24000);
+    }
+    textLoad();
+    setInterval(textLoad, 28000);
+</script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
