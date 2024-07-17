@@ -6,8 +6,7 @@ django-extensions==3.2.3
 django-mysql==4.14.0
 idna==3.7
 pillow==10.4.0
-psycopg==3.2.1
-psycopg2==2.9.9
+psycopg2-binary==2.9.3
 requests==2.32.3
 setuptools==70.3.0
 sqlparse==0.5.0
