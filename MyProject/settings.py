@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-h)*qk11zc22+s213&u^w(kh1q0*e!rd-jcuz%%m@78+5uga2j(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,15 +78,10 @@ WSGI_APPLICATION = 'MyProject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ayush',
-        'USER': 'root',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -127,8 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 import os
-SECRET_KEY = os.getenv('SECRET_KEY', 'akayush@9648')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
 STATIC_URL = 'static/'
 
 
