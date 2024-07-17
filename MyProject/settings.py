@@ -127,6 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 import os
+SECRET_KEY = os.getenv('SECRET_KEY', 'akayush@9648')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 STATIC_URL = 'static/'
 
 
