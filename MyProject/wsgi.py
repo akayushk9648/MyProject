@@ -1,16 +1,16 @@
 """
-WSGI config for deploy_on_pythonanywhere project.
+WSGI config for MyProject project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
+https://docs.djangoproject.com/en/3.8/howto/deployment/wsgi/
 """
 
 import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'deploy_on_pythonanywhere.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyProject.settings')
 
 application = get_wsgi_application()
